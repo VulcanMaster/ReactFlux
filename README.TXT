@@ -71,3 +71,7 @@ Result => appearing the content of the file
 
 15. Add support of bootstrap, jquery and gulp-concat
     npm install --save bootstrap@3.3.5 jquery@2.1.4 gulp-concat@2.6.0
+
+16. Add esLint JS to handle the messages from JavaScript
+
+ npm install --save gulp-eslint@0.15.0
