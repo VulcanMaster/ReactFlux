@@ -75,3 +75,7 @@ Result => appearing the content of the file
 16. Add esLint JS to handle the messages from JavaScript
 
  npm install --save gulp-eslint@0.15.0
+
+ 17. Add to the project the react router and flux support
+ 
+    npm install --save react@0.13.3 react-router@0.13.3 flux@2.0.3
