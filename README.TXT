@@ -79,3 +79,6 @@ Result => appearing the content of the file
  17. Add to the project the react router and flux support
  
     npm install --save react@0.13.3 react-router@0.13.3 flux@2.0.3
+____________________________________________________________________
+
+17. JSX - "HTML" that compiles to JS
