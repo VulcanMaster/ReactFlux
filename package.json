@@ -1,0 +1,27 @@
+{
+  "name": "psadmin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VulcanMaster/ReactRedux.git"
+  },
+  "author": "VulcanMaster",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VulcanMaster/ReactRedux/issues"
+  },
+  "homepage": "https://github.com/VulcanMaster/ReactRedux#readme",
+  "dependencies": {
+    "browserify": "^11.0.1",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^2.2.0",
+    "gulp-open": "^1.0.0",
+    "reactify": "^1.1.1",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}
