@@ -65,3 +65,9 @@ Result => appearing the content of the file
 => observ the folder content 
 13. Cmd: gulp 
 => builds all in accordande with the configuration from gulpfile.js 
+
+14. Add support for js files and bundle them: 
+    npm install --save browserify@11.0.1 reactify@1.1.1 vinyl-source-stream@1.1.0
+
+15. Add support of bootstrap, jquery and gulp-concat
+    npm install --save bootstrap@3.3.5 jquery@2.1.4 gulp-concat@2.6.0
