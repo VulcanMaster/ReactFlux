@@ -82,3 +82,6 @@ Result => appearing the content of the file
 ____________________________________________________________________
 
 17. JSX - "HTML" that compiles to JS
+
+18. Install functionality for WebApi - lodash . Looks this is a MAC Api.
+    npm install --save lodash
