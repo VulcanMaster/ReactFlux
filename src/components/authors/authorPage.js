@@ -6,6 +6,10 @@ var AuthorList = require('./authorList');
 
 var Authors = React.createClass({
 
+    propTypes:{
+        authors: React.PropTypes.array.isRequired
+    },
+
     getInitialState: function () {
         return {
             authors: []
