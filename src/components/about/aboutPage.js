@@ -4,6 +4,22 @@ var React = require('react');
 // var withRouter = require('react-router').withRouter;
 
 var About = React.createClass({
+    statics: {
+        willTransitionTo: function (transition, params, query, callback) {
+            if (!confirm('Are you sure you read a page that\`s this boring?')) {
+                transition.about();
+            } else {
+                callback();
+            }
+        },
+
+        willTransitionFrom: function (transition, component) {
+            if (!confirm('Are you sure you read a page that\`s this exciting?')) {
+                transition.about();
+            }
+        }
+    },
+
     // componentDidMount: function() {
     // 	this.props.router.setRouteLeaveHook(this.props.route, this.routerWillLeave)
     // },
