@@ -19,7 +19,8 @@ var config = {
 		images: './src/images/*',
 		css: [
 			'node_modules/bootstrap/dist/css/bootstrap.min.css',
-			'node_modules/bootstrap/dist/css/bootstrap-theme.min.css'
+			'node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
+			'node_modules/toastr/toastr.css'
 		],
 		dist: './dist',
 		mainJs: './src/main.js'
@@ -66,7 +67,7 @@ gulp.task('css', function () {
 		.pipe(gulp.dest(config.paths.dist + '/css'))
 });
 
-gulp.task('images', function() {
+gulp.task('images', function () {
 	gulp.src(config.paths.images)
 		.pipe(gulp.dest(config.paths.dist + '/images'))
 		.pipe(connect.reload());
