@@ -141,3 +141,10 @@ ____________________________________________________________________
     - dispatch(object payload) - "Hey dispatcher, tell the stores about this action. - Action"
 
     - isDispatching() - "I`m busy dispatching callback right now."
+
+24. Object-assign - npm library that glue different objects in one.
+
+    npm install --save object-assign
+
+    Example: 
+    objectAssign({foo: 0}, {bar: 1});  //=> {foo: 0, bar: 1} 
