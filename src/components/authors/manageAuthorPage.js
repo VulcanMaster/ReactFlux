@@ -12,7 +12,6 @@ var ManageAuthorPage = React.createClass({
     },
 
     setAuthorState: function (event) {
-        debugger;
         var field = event.target.name;
         var value = event.target.value;
         this.state.author[field] = value;
