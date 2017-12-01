@@ -49526,8 +49526,14 @@ module.exports = Authors;
 var React = require('react');
 var AuthorForm = require('./authorForm');
 var AuthorApi = require('../../api/authorApi');
+var Router = require('react-router');
+
 
 var ManageAuthorPage = React.createClass({displayName: "ManageAuthorPage",
+    // mixins - name by convention, react will look for this.
+	mixins: [
+		Router.Navigation
+	],    
 
     getInitialState: function () {
         return {
@@ -49545,17 +49551,17 @@ var ManageAuthorPage = React.createClass({displayName: "ManageAuthorPage",
     saveAuthor: function (event) {
         event.preventDefault();
         AuthorApi.saveAuthor(this.state.author);
-        if (!this.authorFormIsValid()) {
-            return;
-        }
+        // if (!this.authorFormIsValid()) {
+        //     return;
+        // }
 
-        if (this.state.author.id) {
-            // AuthorActions.updateAuthor(this.state.author);
-        } else {
-            // AuthorActions.createAuthor(this.state.author);
-        }
+        // if (this.state.author.id) {
+        //     AuthorActions.updateAuthor(this.state.author);
+        // } else {
+        //     AuthorActions.createAuthor(this.state.author);
+        // }
 
-        this.setState({ dirty: false });
+        // this.setState({ dirty: false });
         // toastr.success('Author saved.');
         this.transitionTo('authors');
     },
@@ -49667,7 +49673,7 @@ module.exports = ManageAuthorPage;
 
 // module.exports = ManageAuthorPage;
 
-},{"../../api/authorApi":198,"./authorForm":202,"react":197}],206:[function(require,module,exports){
+},{"../../api/authorApi":198,"./authorForm":202,"react":197,"react-router":28}],206:[function(require,module,exports){
 "use strict";
 
 var React = require('react');

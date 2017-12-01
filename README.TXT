@@ -85,3 +85,6 @@ ____________________________________________________________________
 
 18. Install functionality for WebApi - lodash . Looks this is a MAC Api.
     npm install --save lodash
+
+19. Install the toaster
+    npm install --save toastr@2.1.0
