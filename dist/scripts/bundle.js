@@ -50535,43 +50535,6 @@ var AuthorForm = React.createClass({displayName: "AuthorForm",
 module.exports = AuthorForm;
 
 },{"../common/textInput":217,"react":206}],213:[function(require,module,exports){
-// "use strict";
-
-// var React = require('react');
-// var Router = require('react-router');
-
-// var AuthorList = React.createClass({
-
-//     render: function () {
-//         var createAuthorRow = function (author) {
-//             return (
-//                 <tr key={author.id}>
-//                     <td><a href={"/#authors/" + author.id}>{author.id}</a></td>
-//                     <td>{author.firstName} {author.lastName}</td>
-//                 </tr>
-//             );
-//         };
-
-//         return (
-//             <div>
-//                 <table className='table'>
-//                     <thead>
-//                         <th>ID</th>
-//                         <th>Name</th>
-//                     </thead>
-//                     <tbody>
-//                         {this.props.authors.map(createAuthorRow, this)}
-//                     </tbody>
-//                 </table>
-//             </div>
-//         );
-//     }
-// });
-
-// module.exports = AuthorList;
-
-// "use strict";
-
 "use strict";
 
 var React = require('react');
