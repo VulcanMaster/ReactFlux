@@ -20,6 +20,19 @@ var Authors = React.createClass({
         };
     },
 
+	_onChange: function() {
+		this.setState({ authors: AuthorStore.getAllAuthors() });
+    },    
+    
+	componentWillMount: function() {
+		AuthorStore.addChangeListener(this._onChange);
+	},
+
+	//Clean up when this component is unmounted
+	componentWillUnmount: function() {
+		AuthorStore.removeChangeListener(this._onChange);
+	},    
+
     render: function () {
         return (
             <div>

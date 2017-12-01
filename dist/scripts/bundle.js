@@ -50535,91 +50535,92 @@ var AuthorForm = React.createClass({displayName: "AuthorForm",
 module.exports = AuthorForm;
 
 },{"../common/textInput":217,"react":206}],213:[function(require,module,exports){
-"use strict";
-
-var React = require('react');
-var Router = require('react-router');
-
-var AuthorList = React.createClass({displayName: "AuthorList",
-
-    render: function () {
-        var createAuthorRow = function (author) {
-            return (
-                React.createElement("tr", {key: author.id}, 
-                    React.createElement("td", null, React.createElement("a", {href: "/#authors/" + author.id}, author.id)), 
-                    React.createElement("td", null, author.firstName, " ", author.lastName)
-                )
-            );
-        };
-
-        return (
-            React.createElement("div", null, 
-                React.createElement("table", {className: "table"}, 
-                    React.createElement("thead", null, 
-                        React.createElement("th", null, "ID"), 
-                        React.createElement("th", null, "Name")
-                    ), 
-                    React.createElement("tbody", null, 
-                        this.props.authors.map(createAuthorRow, this)
-                    )
-                )
-            )
-        );
-    }
-});
-
-module.exports = AuthorList;
-
 // "use strict";
 
 // var React = require('react');
 // var Router = require('react-router');
-// var Link = Router.Link;
-// var AuthorActions = require('../../actions/authorActions');
-// var toastr = require('toastr');
 
 // var AuthorList = React.createClass({
-// 	propTypes: {
-// 		authors: React.PropTypes.array.isRequired
-// 	},
 
-// 	deleteAuthor: function(id, event) {
-// 		event.preventDefault();
-// 		AuthorActions.deleteAuthor(id);
-// 		toastr.success('Author Deleted');
-// 	},
+//     render: function () {
+//         var createAuthorRow = function (author) {
+//             return (
+//                 <tr key={author.id}>
+//                     <td><a href={"/#authors/" + author.id}>{author.id}</a></td>
+//                     <td>{author.firstName} {author.lastName}</td>
+//                 </tr>
+//             );
+//         };
 
-// 	render: function() {
-// 		var createAuthorRow = function(author) {
-// 			return (
-// 				<tr key={author.id}>
-// 					<td><a href="#" onClick={this.deleteAuthor.bind(this, author.id)}>Delete</a></td>
-// 					<td><Link to="manageAuthor" params={{id: author.id}}>{author.id}</Link></td>
-// 					<td>{author.firstName} {author.lastName}</td>
-// 				</tr>
-// 			);
-// 		};
-
-// 		return (
-// 			<div>
-// 				<table className="table">
-// 					<thead>
-// 						<th></th>
-// 						<th>ID</th>
-// 						<th>Name</th>
-// 					</thead>
-// 					<tbody>
-// 						{this.props.authors.map(createAuthorRow, this)}
-// 					</tbody>
-// 				</table>
-// 			</div>
-// 		);
-// 	}
+//         return (
+//             <div>
+//                 <table className='table'>
+//                     <thead>
+//                         <th>ID</th>
+//                         <th>Name</th>
+//                     </thead>
+//                     <tbody>
+//                         {this.props.authors.map(createAuthorRow, this)}
+//                     </tbody>
+//                 </table>
+//             </div>
+//         );
+//     }
 // });
 
 // module.exports = AuthorList;
 
-},{"react":206,"react-router":37}],214:[function(require,module,exports){
+// "use strict";
+
+"use strict";
+
+var React = require('react');
+var Router = require('react-router');
+var Link = Router.Link;
+var AuthorActions = require('../../../actions/authorActions');
+var toastr = require('toastr');
+
+var AuthorList = React.createClass({displayName: "AuthorList",
+	propTypes: {
+		authors: React.PropTypes.array.isRequired
+	},
+
+	deleteAuthor: function(id, event) {
+		event.preventDefault();
+		AuthorActions.deleteAuthor(id);
+		toastr.success('Author Deleted');
+	},
+
+	render: function() {
+		var createAuthorRow = function(author) {
+			return (
+				React.createElement("tr", {key: author.id}, 
+					React.createElement("td", null, React.createElement("a", {href: "#", onClick: this.deleteAuthor.bind(this, author.id)}, "Delete")), 
+					React.createElement("td", null, React.createElement(Link, {to: "manageAuthor", params: {id: author.id}}, author.id)), 
+					React.createElement("td", null, author.firstName, " ", author.lastName)
+				)
+			);
+		};
+
+		return (
+			React.createElement("div", null, 
+				React.createElement("table", {className: "table"}, 
+					React.createElement("thead", null, 
+						React.createElement("th", null), 
+						React.createElement("th", null, "ID"), 
+						React.createElement("th", null, "Name")
+					), 
+					React.createElement("tbody", null, 
+						this.props.authors.map(createAuthorRow, this)
+					)
+				)
+			)
+		);
+	}
+});
+
+module.exports = AuthorList;
+},{"../../../actions/authorActions":1,"react":206,"react-router":37,"toastr":207}],214:[function(require,module,exports){
 "use strict";
 
 var React = require('react');
@@ -50641,6 +50642,19 @@ var Authors = React.createClass({displayName: "Authors",
             authors: AuthorStore.getAllAuthors() //[]
         };
     },
+
+	_onChange: function() {
+		this.setState({ authors: AuthorStore.getAllAuthors() });
+    },    
+    
+	componentWillMount: function() {
+		AuthorStore.addChangeListener(this._onChange);
+	},
+
+	//Clean up when this component is unmounted
+	componentWillUnmount: function() {
+		AuthorStore.removeChangeListener(this._onChange);
+	},    
 
     render: function () {
         return (
@@ -51027,7 +51041,7 @@ var routes = (
     React.createElement(Route, {name: "authors", handler: require('./components/authors/authorPage')}), 
 
     React.createElement(Route, {name: "addAuthor", path: "author", handler: require('./components/authors/manageAuthorPage')}), 
-    /* <Route name="manageAuthor" path="author/:id" handler={require('./components/authors/manageAuthorPage')} /> */
+    React.createElement(Route, {name: "manageAuthor", path: "author/:id", handler: require('./components/authors/manageAuthorPage')}), 
     React.createElement(Route, {name: "about", handler: require('./components/about/aboutPage')}), 
     React.createElement(NotFoundRoute, {handler: require('./components/notFoundPage')}), 
     React.createElement(Redirect, {from: "about-us", to: "about"}), 
