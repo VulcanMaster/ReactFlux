@@ -88,3 +88,56 @@ ____________________________________________________________________
 
 19. Install the toaster
     npm install --save toastr@2.1.0
+
+20. Flux. 
+    1) Action => Delete User (payload - specific type of data format)
+        Payload example:
+
+        {
+            type: USER_SAVED
+            data: {
+              firstName: "John",
+              lastName: "Johnson"
+            }
+        }
+
+    2) Dispatcher => Notify everyone who cares (cental hub + callback + send actions to store)
+    3) Store => Hold app state + logic + data retrieval + register callback with dispatcher + user Node`s EventEmitter
+        + extend EventEmitter
+        + addChangeListener and removeChangeListener
+        + emitChange
+
+    4) React View => call the Action loop 
+        + top level component 
+        + interact with stores, 
+        + holds data in state 
+        + sends data to children as props
+
+21. Flux could be multiply stores
+
+    Dispatcher => Payload =>  | => User Store
+                              | => Address Store
+                              | => Product Store
+
+22. Flux workflow example;
+    React - Hey CourseAction, someone clicked this "Save Course" button;
+
+    Action - Thanks React! I registered an action creator with the dispatcher, so the dispatcher should take care of notifying all the stores that care;
+
+    Dispatcher - Let me see who cares about a course being saved. Ah! Looks like the CourseStore has registered a callback with me, so I`ll let her know.
+
+    Store - Hi dispatcher! Thanks for the update! I`ll update my data with the payload you sent. Then I`ll emit an event for the React component that care.
+
+    React - Ooo! Shiny new data from the store! I`ll update the UI to reflect this!
+
+23. Flux API. Contains only 5 items:
+    
+    - register(function callback) - "Hey dispatcher, run me when action happen. - Store" 
+    
+    - unregister(string id) - "Hey dispatcher, stop worrying about this action. - Store"
+
+    - waitFor(array<string> ids) - "Update this store first. - Store"
+
+    - dispatch(object payload) - "Hey dispatcher, tell the stores about this action. - Action"
+
+    - isDispatching() - "I`m busy dispatching callback right now."
